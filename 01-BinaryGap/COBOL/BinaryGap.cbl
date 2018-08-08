@@ -9,7 +9,7 @@
       *N is the decimal number (input data). In this program we will
       *find out the maximal binary gap in the binary representation of 
       *N.
-       01 N PIC 9(5) VALUE 10.
+       01 N PIC 9(10) VALUE 529.
       *Length of the binary representation is calculated according
       *to formula ln(n) / ln(2).
       *Source: https://stackoverflow.com/questions/7150035/calculating-
@@ -34,6 +34,7 @@
            display TEMP.
            perform BIN-CONV-LOOP-PARA UNTIL TEMP <= 1.
            perform BIN-CONV-LOOP-END-PARA.
+
            stop 'Press Enter to continue'.
            stop run.
            goback.
