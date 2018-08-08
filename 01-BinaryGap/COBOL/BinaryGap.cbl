@@ -24,7 +24,7 @@
       *REM -- remainder of the last division.
        01 REM PIC 9 VALUE 0.
       *CTR -- counter for the binary conversion loop.
-       01 CTR pic 99 VALUE 0.
+       01 CTR pic 99 VALUE 1 COMP.
        procedure division.
        MAINLINE SECTION.
        BIN-CONV-PARA.
@@ -32,7 +32,8 @@
            move N to TEMP.
            display 'Hello world'.
            display TEMP.
-           perform BIN-CONV-LOOP-SECT UNTIL TEMP <= 1.
+           perform BIN-CONV-LOOP-PARA UNTIL TEMP <= 1.
+           perform BIN-CONV-LOOP-END-PARA.
            stop 'Press Enter to continue'.
            stop run.
            goback.
@@ -43,7 +44,14 @@
            display TEMP.
            display 'REM'.
            display REM.
-       BIN-CONV-LOOP-EXIT.
+           move REM to BIN-REP(CTR:1).
+           add 1 to CTR.
+           display 'BIN-REP'.
+           display BIN-REP.
+           display 'CTR'.
+           display CTR.
+       BIN-CONV-LOOP-END-PARA.
+           move TEMP to BIN-REP(CTR:1).
            exit.
        END-SECT SECTION. 
        end program BinaryGap.
