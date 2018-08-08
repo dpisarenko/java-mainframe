@@ -25,11 +25,15 @@
        01 REM PIC 9 VALUE 0.
       *CTR -- counter for the binary conversion loop.
        01 CTR pic 99 VALUE 1 COMP. 
-      *LARGEST-GAP-SIZE -- size of the largest gap found so far in the
+      *MAX-GAP-SIZE -- size of the largest gap found so far in the
       *binary representation. Its maximum possible value depends on 
       *size of BIN-REP. If there are 32 bits, then the maximum binary
       *gap can be 32 bits long.
-       01 LARGEST-GAP-SIZE pic 99 VALUE 0 COMP.
+       01 MAX-GAP-SIZE pic 99 VALUE 0 COMP.
+      *CUR-GAP-SIZE -- size of the current binary gap.
+       01 CUR-GAP-SIZE pic 99 value 0 comp.
+      *CUR-DIGIT -- current digit of binary representation of N.
+       01 CUR-DIGIT pic 9.
        procedure division.
        MAINLINE SECTION.
        BIN-CONV-PARA.
@@ -37,6 +41,9 @@
            move N to TEMP.
            perform BIN-CONV-LOOP-PARA UNTIL TEMP <= 1.
            perform BIN-CONV-LOOP-END-PARA.
+           perform GAP-SIZE-LOOP-SECT-LOOP-PARA UNTIL CTR = 0.
+           display 'MAX-GAP-SIZE:'.
+           display MAX-GAP-SIZE.
        BIN-GAP-COUNT-PARA.
 
       *Count the binary gaps.
@@ -55,5 +62,20 @@
            display 'CTR'.
            display CTR.
            exit.
-       END-SECT SECTION. 
+       BIN-CONV-LOOP-SECT-END-SECT SECTION.
+       GAP-SIZE-LOOP-SECT SECTION.
+       GAP-SIZE-LOOP-SECT-LOOP-PARA.
+           display 'CTR:'
+           display CTR.
+           move BIN-REP(CTR:1) TO CUR-DIGIT.
+           if CUR-DIGIT = 0 then
+               add 1 to CUR-GAP-SIZE
+           else
+               compute MAX-GAP-SIZE = function max(MAX-GAP-SIZE, 
+               CUR-GAP-SIZE)
+               move 0 to CUR-GAP-SIZE
+           end-if.
+           subtract 1 from CTR.
+       GAP-SIZE-LOOP-SECT-END-PARA.
+       GAP-SIZE-LOOP-SECT-END-SECT SECTION.
        end program BinaryGap.
