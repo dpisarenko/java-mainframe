@@ -17,14 +17,27 @@
       *Let's say the maximum value N can take is 2147483647.
       *CEIL(ln(2147483647)/ln(2)) = CEIL(21.4876 / 0.6931) =
       *= CEIL (31.0022) = 32
-       01 BIN-REP PIC 9(32).
+       01 BIN-REP PIC 9(32) VALUE 0.
+      *This is a variable for holding current value during conversion
+      *to binary.
+       01 TEMP PIC 9(5) VALUE 0.
+      *REM -- remainder of the last division.
+       01 REM PIC 9 VALUE 0.
+      *CTR -- counter for the binary conversion loop.
        procedure division.
-      * Next step: How many bits does binary representation of 99999 
-      * contain?
+       BIN-CONV-PARA.
+      *Convert N to its binary representation and store it in BIN-REP.
+           move N to TEMP.
            display 'Hello world'.
-           display N.
+           display TEMP.
+       BIN-CONV-LOOP-PARA.
+           divide TEMP by 2 giving TEMP remainder REM.
+           display 'TEMP'.
+           display TEMP.
+           display 'REM'.
+           display REM.
+       END-PARA.
            stop 'Press Enter to continue'.
            stop run.
            goback.
-
        end program BinaryGap.
