@@ -24,17 +24,22 @@
       *REM -- remainder of the last division.
        01 REM PIC 9 VALUE 0.
       *CTR -- counter for the binary conversion loop.
-       01 CTR pic 99 VALUE 1 COMP.
+       01 CTR pic 99 VALUE 1 COMP. 
+      *LARGEST-GAP-SIZE -- size of the largest gap found so far in the
+      *binary representation. Its maximum possible value depends on 
+      *size of BIN-REP. If there are 32 bits, then the maximum binary
+      *gap can be 32 bits long.
+       01 LARGEST-GAP-SIZE pic 99 VALUE 0 COMP.
        procedure division.
        MAINLINE SECTION.
        BIN-CONV-PARA.
       *Convert N to its binary representation and store it in BIN-REP.
            move N to TEMP.
-           display 'Hello world'.
-           display TEMP.
            perform BIN-CONV-LOOP-PARA UNTIL TEMP <= 1.
            perform BIN-CONV-LOOP-END-PARA.
+       BIN-GAP-COUNT-PARA.
 
+      *Count the binary gaps.
            stop 'Press Enter to continue'.
            stop run.
            goback.
