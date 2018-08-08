@@ -51,7 +51,7 @@
            display 'CTR'.
            display CTR.
        BIN-CONV-LOOP-END-PARA.
-           move TEMP to BIN-REP(CTR:1).
+           move TEMP(5:1) to BIN-REP(CTR:1).
            exit.
        END-SECT SECTION. 
        end program BinaryGap.
