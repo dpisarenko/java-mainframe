@@ -4,7 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <ProjectGuid>{F4883DF0-8FD0-4895-A8D7-0BE0B98BBC59}</ProjectGuid>
     <OutputName>BinaryGapCobol</OutputName>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>BinaryGapCobol</RootNamespace>
     <MFProjectType>Native</MFProjectType>
   </PropertyGroup>

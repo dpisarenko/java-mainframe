@@ -28,7 +28,8 @@
        .
 
        entry MFU-TC-METADATA-SETUP-PREFIX & TEST-TestProgram1.
-           move "This is a example of a dynamic description" to MFU-MD-TESTCASE-DESCRIPTION
+           move "This is a example of a dynamic description"
+             to MFU-MD-TESTCASE-DESCRIPTION
            move 10000 to MFU-MD-TIMEOUT-IN-MS
            move "smoke,dynmeta" to MFU-MD-TRAITS
            set MFU-MD-SKIP-TESTCASE to false
