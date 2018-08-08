@@ -8,8 +8,19 @@
          <path enabled="true" name="/COBOL-2" type="mfpath"/>
       </build-precedence-paths>
       <configurations default="New Configuration" linkedWith="2017" xsi:type="buildConfigurationsContainer">
-         <configuration description="New Configuration" type="single_exe" is64bit="true" createlbr="false" platform="Windows" xsi:type="cobolBuildConfiguration">
+         <configuration description="New Configuration" type="all_intgnt" is64bit="true" createlbr="false" platform="Windows" xsi:type="cobolBuildConfiguration">
             <targetdir name="New Configuration.bin"/>
+            <application_configuration xsi:type="runtimeConfigurationSettings">
+               <cobol_switches xsi:type="projectCobolSwitches"/>
+               <rts_switches xsi:type="projectRtsSwitches"/>
+               <envScriptParameters></envScriptParameters>
+               <envScriptPath></envScriptPath>
+               <inheritBuildEnv>false</inheritBuildEnv>
+               <tunables>
+                  <tunable index="0" name="screen_lines" value="25"/>
+                  <tunable index="0" name="screen_cols" value="80"/>
+               </tunables>
+            </application_configuration>
             <link_settings xsi:type="linkSettings">
                <additional_options value=""/>
                <rts_bind value="false"/>

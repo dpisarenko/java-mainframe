@@ -101,7 +101,7 @@
 	<!--  ********************************  -->
 	<!-- Configuration:New_Configuration -->
 	<target name="FileCompile.New_Configuration.TestBinaryGap.cbl">
-		<cobol debug="true" analysisData="${analysisData}" threadCount="${buildThreadCount}" threadedRts="true" analysisDataDir="${analysisDataDir}" useDirectiveSet="${useDirectiveSet}" srcfile="TestBinaryGap.cbl" destdir="${basedir}/New_Configuration.bin" is64bit="true" failonerror="${cobolFailOnError}" srcdir="${basedir}" forceCompile="${forceCompile}" connectionName="${connectionName}" projectName="${projectName}" desttype="obj">
+		<cobol debug="true" analysisData="${analysisData}" threadCount="${buildThreadCount}" threadedRts="true" analysisDataDir="${analysisDataDir}" useDirectiveSet="${useDirectiveSet}" srcfile="TestBinaryGap.cbl" destdir="${basedir}/New_Configuration.bin" is64bit="true" userenv="${userenv.filename}" failonerror="${cobolFailOnError}" srcdir="${basedir}" forceCompile="${forceCompile}" connectionName="${connectionName}" projectName="${projectName}" desttype="obj">
 			<mffilelist refid="cobol.copybook.locations"/>
 			<mfdirlist refid="cobol_directive_set_1"/>
 		</cobol>
@@ -136,14 +136,14 @@
 		</ac:for>
 	</target>
 	<target name="cobol.compile.cfg.New_Configuration">
-		<cobol debug="true" analysisData="${analysisData}" threadCount="${buildThreadCount}" threadedRts="true" analysisDataDir="${analysisDataDir}" useDirectiveSet="${useDirectiveSet}" destdir="${basedir}/New_Configuration.bin" is64bit="true" failonerror="${cobolFailOnError}" forceCompile="${forceCompile}" connectionName="${connectionName}" projectName="${projectName}" desttype="obj">
+		<cobol debug="true" analysisData="${analysisData}" threadCount="${buildThreadCount}" threadedRts="true" analysisDataDir="${analysisDataDir}" useDirectiveSet="${useDirectiveSet}" destdir="${basedir}/New_Configuration.bin" is64bit="true" userenv="${userenv.filename}" failonerror="${cobolFailOnError}" forceCompile="${forceCompile}" connectionName="${connectionName}" projectName="${projectName}" desttype="obj">
 			<mffilelist refid="cobol.copybook.locations"/>
 			<mfdirlist refid="cobol_directive_set_1"/>
 			<mffilelist refid="cobol_file_set_1"/>
 		</cobol>
 	</target>
 	<target name="cobol.link.cfg.New_Configuration">
-		<cobollink debug="true" destfile="BinaryGapTests" entrypoint="" sharedRts="true" destdir="${basedir}/New_Configuration.bin" is64bit="true" failonerror="${cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+		<cobollink debug="true" destfile="BinaryGapTests" entrypoint="" sharedRts="true" destdir="${basedir}/New_Configuration.bin" is64bit="true" userenv="${userenv.filename}" failonerror="${cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
 			<mffilelist refid="cobol.default.object.files.New Configuration"/>
 		</cobollink>
 	</target>
