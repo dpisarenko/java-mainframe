@@ -40,18 +40,14 @@
        BIN-CONV-LOOP-SECT SECTION.
        BIN-CONV-LOOP-PARA.
            divide TEMP by 2 giving TEMP remainder REM.
-           display 'TEMP'.
-           display TEMP.
-           display 'REM'.
-           display REM.
            move REM to BIN-REP(CTR:1).
            add 1 to CTR.
+       BIN-CONV-LOOP-END-PARA.
+           move TEMP(5:1) to BIN-REP(CTR:1).
            display 'BIN-REP'.
            display BIN-REP.
            display 'CTR'.
            display CTR.
-       BIN-CONV-LOOP-END-PARA.
-           move TEMP(5:1) to BIN-REP(CTR:1).
            exit.
        END-SECT SECTION. 
        end program BinaryGap.
