@@ -33,6 +33,9 @@
            display 'Hello world'.
            display TEMP.
            perform BIN-CONV-LOOP-SECT UNTIL TEMP <= 1.
+           stop 'Press Enter to continue'.
+           stop run.
+           goback.
        BIN-CONV-LOOP-SECT SECTION.
        BIN-CONV-LOOP-PARA.
            divide TEMP by 2 giving TEMP remainder REM.
@@ -42,8 +45,5 @@
            display REM.
        BIN-CONV-LOOP-EXIT.
            exit.
-       END-PARA.
-           stop 'Press Enter to continue'.
-           stop run.
-           goback.
+       END-SECT SECTION. 
        end program BinaryGap.
