@@ -24,18 +24,24 @@
       *REM -- remainder of the last division.
        01 REM PIC 9 VALUE 0.
       *CTR -- counter for the binary conversion loop.
+       01 CTR pic 99 VALUE 0.
        procedure division.
+       MAINLINE SECTION.
        BIN-CONV-PARA.
       *Convert N to its binary representation and store it in BIN-REP.
            move N to TEMP.
            display 'Hello world'.
            display TEMP.
+           perform BIN-CONV-LOOP-SECT UNTIL TEMP <= 1.
+       BIN-CONV-LOOP-SECT SECTION.
        BIN-CONV-LOOP-PARA.
            divide TEMP by 2 giving TEMP remainder REM.
            display 'TEMP'.
            display TEMP.
            display 'REM'.
            display REM.
+       BIN-CONV-LOOP-EXIT.
+           exit.
        END-PARA.
            stop 'Press Enter to continue'.
            stop run.
