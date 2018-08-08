@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="BinaryGapTests" default="cobolbuild" basedir="." xmlns:ac="antlib:net.sf.antcontrib">
+<project name="COBOL-TEST" default="cobolbuild" basedir="." xmlns:ac="antlib:net.sf.antcontrib">
 	<taskdef resource="com/microfocus/ant/antlib.xml"/>
 	<!--  ***********************************  -->
 	<!--  * General property initialisation *  -->
 	<!--  ***********************************  -->
 	<property environment="env"/>
-	<property name="BinaryGapTests" value="${basedir}"/>
+	<property name="COBOL-TEST" value="${basedir}"/>
 	<property name="COBOL-2" value="C:\usr\dp\dev\java-mainframe\01-BinaryGap\COBOL-2"/>
 	<property name="cfg" value="New_Configuration"/>
 	<property name="cfgtarget" value="cfg.${cfg}"/>
@@ -24,7 +24,7 @@
 	<property name="TESTCOVER_VALUE_ON" value="TESTCOVER"/>
 	<property name="TESTCOVER_VALUE_OFF" value="NOTESTCOVER"/>
 	<target name="printLocations">
-		<echo message="Project Location: &apos;project.BinaryGapTests&apos;=${BinaryGapTests}"/>
+		<echo message="Project Location: &apos;project.COBOL-TEST&apos;=${COBOL-TEST}"/>
 		<echo message="Project Location: &apos;project.COBOL-2&apos;=${COBOL-2}"/>
 		<echo message="Project Location: &apos;pathVar.PROJECT_LOC&apos;=${pathVar.PROJECT_LOC}"/>
 		<echo message="Project Location: &apos;pathVar.WORKSPACE_LOC&apos;=${pathVar.WORKSPACE_LOC}"/>
@@ -81,7 +81,7 @@
 		<directive name="MAX-ERROR" id="max-error" value="100"/>
 		<directive name="SOURCEFORMAT" id="sourceformat" value="variable"/>
 		<directive name="SOURCETABSTOP" id="sourcetabstop" value="4"/>
-		<directive name="COLLECTION" id="collection" value="BinaryGapTests"/>
+		<directive name="COLLECTION" id="collection" value="COBOL-TEST"/>
 		<directive name="${TESTCOVER_VALUE_1}"/>
 	</mfdirlist>
 	<!--  **********************  -->
@@ -93,7 +93,7 @@
 	</mffilelist>
 	<!-- COBOL copybook locations -->
 	<mffilelist id="cobol.copybook.locations">
-		<path type="copybook" name="${BinaryGapTests}"/>
+		<path type="copybook" name="${COBOL-TEST}"/>
 		<path type="copybook" name="${COBOL-2}"/>
 	</mffilelist>
 	<!--  ********************************  -->
@@ -101,7 +101,7 @@
 	<!--  ********************************  -->
 	<!-- Configuration:New_Configuration -->
 	<target name="FileCompile.New_Configuration.TestBinaryGap.cbl">
-		<cobol debug="true" analysisData="${analysisData}" threadCount="${buildThreadCount}" threadedRts="true" analysisDataDir="${analysisDataDir}" useDirectiveSet="${useDirectiveSet}" srcfile="TestBinaryGap.cbl" destdir="${basedir}/New_Configuration.bin" is64bit="true" userenv="${userenv.filename}" failonerror="${cobolFailOnError}" srcdir="${basedir}" forceCompile="${forceCompile}" connectionName="${connectionName}" projectName="${projectName}" desttype="obj">
+		<cobol debug="true" analysisData="${analysisData}" threadCount="${buildThreadCount}" threadedRts="true" analysisDataDir="${analysisDataDir}" useDirectiveSet="${useDirectiveSet}" srcfile="TestBinaryGap.cbl" destdir="${basedir}/New_Configuration.bin" is64bit="true" failonerror="${cobolFailOnError}" srcdir="${basedir}" forceCompile="${forceCompile}" connectionName="${connectionName}" projectName="${projectName}" desttype="obj">
 			<mffilelist refid="cobol.copybook.locations"/>
 			<mfdirlist refid="cobol_directive_set_1"/>
 		</cobol>
@@ -136,14 +136,14 @@
 		</ac:for>
 	</target>
 	<target name="cobol.compile.cfg.New_Configuration">
-		<cobol debug="true" analysisData="${analysisData}" threadCount="${buildThreadCount}" threadedRts="true" analysisDataDir="${analysisDataDir}" useDirectiveSet="${useDirectiveSet}" destdir="${basedir}/New_Configuration.bin" is64bit="true" userenv="${userenv.filename}" failonerror="${cobolFailOnError}" forceCompile="${forceCompile}" connectionName="${connectionName}" projectName="${projectName}" desttype="obj">
+		<cobol debug="true" analysisData="${analysisData}" threadCount="${buildThreadCount}" threadedRts="true" analysisDataDir="${analysisDataDir}" useDirectiveSet="${useDirectiveSet}" destdir="${basedir}/New_Configuration.bin" is64bit="true" failonerror="${cobolFailOnError}" forceCompile="${forceCompile}" connectionName="${connectionName}" projectName="${projectName}" desttype="obj">
 			<mffilelist refid="cobol.copybook.locations"/>
 			<mfdirlist refid="cobol_directive_set_1"/>
 			<mffilelist refid="cobol_file_set_1"/>
 		</cobol>
 	</target>
 	<target name="cobol.link.cfg.New_Configuration">
-		<cobollink debug="true" destfile="BinaryGapTests" entrypoint="" sharedRts="true" destdir="${basedir}/New_Configuration.bin" is64bit="true" userenv="${userenv.filename}" failonerror="${cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+		<cobollink debug="true" destfile="COBOL-TEST" entrypoint="" sharedRts="true" destdir="${basedir}/New_Configuration.bin" is64bit="true" failonerror="${cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
 			<mffilelist refid="cobol.default.object.files.New Configuration"/>
 		</cobollink>
 	</target>
@@ -157,7 +157,7 @@
 		</cobolclean>
 		<cobolclean destdir="${basedir}/New_Configuration.bin" desttype="dll">
 			<mffilelist>
-				<file name="BinaryGapTests"/>
+				<file name="COBOL-TEST"/>
 			</mffilelist>
 		</cobolclean>
 	</target>

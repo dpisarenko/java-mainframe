@@ -1,4 +1,4 @@
-      *> Test Fixture for COBOL-2, BinaryGap
+      *> Test Fixture for BinaryGap, BinaryGap
 
        copy "mfunit_prototypes.cpy".
 
@@ -32,7 +32,7 @@
 
        InitializeLinkageData section.
            *> Load the library that is being tested
-           set pp to entry "COBOL-2"
+           set pp to entry "BinaryGap"
 
            exit section
        .
