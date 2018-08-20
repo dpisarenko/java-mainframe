@@ -26,6 +26,6 @@ Each body line should contain
 * total price for that product excl. VAT,
 * total price for that product incl. VAT.
 
-If there is a rebate assigned to a particular product, it should be applied before VAT is calculated. If the rebate is 10 %, the unit price of a product is 10,--, there are 2 items, and  the VAT rate is 20 %, then total price excl. VAT should be `(2 * 10)*(1-0.1) = 18`. Total price incl. VAT should equal to ``(2 * 10)*(1-0.1)*1.2 = 21,60`.
+If there is a rebate assigned to a particular product, it should be applied before VAT is calculated. If the rebate is 10 %, the unit price of a product is 10,--, there are 2 items, and  the VAT rate is 20 %, then total price excl. VAT should be `(2 * 10)*(1-0.1) = 18`. Total price incl. VAT should equal to `(2 * 10)*(1-0.1)*1.2 = 21,60`.
 
 The footer should contain a sum of all total prices incl. VAT and a lettering `TOTAL`. 
