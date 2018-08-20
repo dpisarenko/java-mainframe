@@ -20,7 +20,8 @@ public class AppTests {
     @Test
     @Parameters({
         "AppTests_1_input.txt, AppTests_1_expRes.txt",
-        "AppTests_2_input.txt, AppTests_2_expRes.txt"
+        "AppTests_2_input.txt, AppTests_2_expRes.txt",
+        "AppTests_3_input.txt, AppTests_3_expRes.txt"
     }) 
     public void test(final String inputFile, final String expResFile)
                     throws IOException {
