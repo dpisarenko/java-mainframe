@@ -7,6 +7,7 @@ import java.text.NumberFormat;
 import java.util.Currency;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.apache.commons.io.FileUtils;
@@ -36,7 +37,7 @@ public class App {
                                             .collect(Collectors.toList());
             final List<InputReceiptLine> validLines = 
                             inputReceiptLines.stream()
-                                            .filter(x -> x != null)
+                                            .filter(Objects::nonNull)
                                             .collect(Collectors.toList());
             if (inputReceiptLines.size() != validLines.size()) {
                 System.err.println("Invalid input data detected");
