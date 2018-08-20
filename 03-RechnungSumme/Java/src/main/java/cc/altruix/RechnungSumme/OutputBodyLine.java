@@ -8,18 +8,24 @@ public class OutputBodyLine {
     public OutputBodyLine(final InputReceiptLine input) {
         this.input = input;
     }
-    public BigDecimal totalWithVat() {
+    private BigDecimal totalWithoutVat() {
         final BigDecimal unitPrice = input.getUnitPrice();
         final BigDecimal quantity = BigDecimal.valueOf(input.getQuantity());
         final BigDecimal rebate = input.getRebateMultiplicator();
-        final BigDecimal vat = input.getVatRateMultiplicator();
-        
+
         BigDecimal result = unitPrice.multiply(quantity);
         result = result.multiply(rebate);
-        result = result.multiply(vat);
-        return result;
+        return result; 
+    } 
+    public BigDecimal totalWithVat() {
+        final BigDecimal totalWithoutVat = totalWithoutVat();
+        final BigDecimal vat = input.getVatRateMultiplicator();
+        return totalWithoutVat.multiply(vat);
     }
     public String toString() {
-        return "";
+        return String.format("%50s %3d PCS %s %s", input.getName(),
+                        input.getQuantity(), 
+                        App.MONEY_FORMAT.format(totalWithoutVat()),
+                        App.MONEY_FORMAT.format(totalWithVat()));
     }
 }

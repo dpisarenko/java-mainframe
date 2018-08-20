@@ -15,7 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class App {
     private final static String USAGE = "java -jar App <inputFileName>";
-    private final static NumberFormat MONEY_FORMAT = createMoneyNumberFormat();
+    public final static NumberFormat MONEY_FORMAT = createMoneyNumberFormat();
     
     private static NumberFormat createMoneyNumberFormat() {
         final NumberFormat format = NumberFormat.getInstance(Locale.GERMANY);
