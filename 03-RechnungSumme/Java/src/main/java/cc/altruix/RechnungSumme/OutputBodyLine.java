@@ -23,7 +23,7 @@ public class OutputBodyLine {
         return totalWithoutVat.multiply(vat);
     }
     public String toString() {
-        return String.format("%50s %3d PCS %s %s", input.getName(),
+        return String.format("%-20s %3d PCS %s %s", input.getName(),
                         input.getQuantity(), 
                         App.MONEY_FORMAT.format(totalWithoutVat()),
                         App.MONEY_FORMAT.format(totalWithVat()));
