@@ -15,6 +15,7 @@
     <ManagedCode>False</ManagedCode>
     <DebugSymbols>True</DebugSymbols>
     <MaxError>100</MaxError>
+    <KeepCodeAnalysisDataFiles>True</KeepCodeAnalysisDataFiles>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>.\bin\x86\Release\</OutputPath>
@@ -28,6 +29,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Application.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="INPUT.DAT" />
+    <None Include="OUTPUT.DAT" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Micro Focus\Visual COBOL\v1.0\MicroFocus.COBOL.targets" />
 </Project>
