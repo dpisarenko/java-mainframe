@@ -2,7 +2,12 @@ package cc.altruix.RechnungSumme;
 
 import java.math.BigDecimal;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class OutputBodyLine {
+    private final static int NAME_LENGTH = 20;
+    public static final String FORMAT_STRING =
+                    "%-" + NAME_LENGTH + "s %3d PCS %s %s";
     private final InputReceiptLine input;
 
     public OutputBodyLine(final InputReceiptLine input) {
@@ -23,7 +28,8 @@ public class OutputBodyLine {
         return totalWithoutVat.multiply(vat);
     }
     public String toString() {
-        return String.format("%-20s %3d PCS %s %s", input.getName(),
+        return String.format(FORMAT_STRING, 
+                        StringUtils.truncate(input.getName(), NAME_LENGTH),
                         input.getQuantity(), 
                         App.MONEY_FORMAT.format(totalWithoutVat()),
                         App.MONEY_FORMAT.format(totalWithVat()));
