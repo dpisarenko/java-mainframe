@@ -23,6 +23,7 @@ public class AppTests {
         "AppTests_2_input.txt, AppTests_2_expRes.txt",
         "AppTests_3_input.txt, AppTests_3_expRes.txt",
         "AppTests_4_input.txt, AppTests_4_expRes.txt",
+        "AppTests_5_input.txt, AppTests_5_expRes.txt",
     }) 
     public void test(final String inputFile, final String expResFile)
                     throws IOException {
