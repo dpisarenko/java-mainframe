@@ -23,7 +23,6 @@
   
        WORKING-STORAGE SECTION .
        01  WS-END-OF-FILE     PIC 9 VALUE 0.
-       01  WS-TYPE-B-COUNTER  PIC 9(6) VALUE 0.
        PROCEDURE DIVISION .
        PROGl.
             PERFORM INIT-PARA
@@ -39,12 +38,11 @@
             PERFORM PROCESS-REC
                 UNTIL WS-END-OF-FILE = 1.
        END-PARA.
-            DISPLAY ' '
-            DISPLAY WS-TYPE-B-COUNTER " 'B' RECORDS READ".
             CLOSE INFILE OUTFILE
             STOP 'PRESS <CR> TO STOP'
             STOP RUN.
        PROCESS-REC.
+            display 'WS-END-OF-FILE = ' WS-END-OF-FILE
             MOVE IN-NAME TO OUT-NAME
             WRITE OUTREC
             DISPLAY OUTREC.
