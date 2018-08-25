@@ -64,13 +64,15 @@
             display 'WS-END-OF-FILE = ' WS-END-OF-FILE
             display 'IN-NAME = ' IN-NAME
       *Calculate the rebate multiplicator (CUR-REBATE-MULT).
-            IF IN-REBATE = 1 then
-                compute CUR-REBATE-MULT = (1.0 - 0.01) 
-            else if IN-REBATE = 5 then
-                compute CUR-REBATE-MULT = (1.0 - 0.5)
-            else 
-                compute CUR-REBATE-MULT = (1 - 0) 
-            END-IF
+            move 1 to CUR-REBATE-MULT
+            evaluate in-rebate
+                when 1
+                    compute CUR-REBATE-MULT = 1.0 - 0.01
+                when 5
+                    compute CUR-REBATE-MULT = 1.0 - 0.5
+                when other
+                    compute CUR-REBATE-MULT = 1 - 0
+            end-evaluate
       *Calculate the VAT multiplicator (CUR-VAT-MULT).
             IF in-vat = 1 then
                 move 1.1 to CUR-VAT-MULT
