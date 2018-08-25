@@ -45,8 +45,6 @@
             PERFORM BOD-PARA
             PERFORM END-PARA.
        INIT-PARA.
-            DISPLAY "START OF PROGRAM"
-            DISPLAY " "
             OPEN INPUT  INFILE
             OPEN OUTPUT OUTFILE
             PERFORM READ-INPUT-FILE.
@@ -64,8 +62,6 @@
             STOP 'PRESS <CR> TO STOP'
             STOP RUN.
        PROCESS-REC.
-            display 'WS-END-OF-FILE = ' WS-END-OF-FILE
-            display 'IN-NAME = ' IN-NAME
       *Calculate the rebate multiplicator (CUR-REBATE-MULT).
             evaluate in-rebate
                 when 1
@@ -96,7 +92,6 @@
             WRITE OUTREC-TYPE-BODY-LINE
             PERFORM READ-INPUT-FILE.
        READ-INPUT-FILE.
-            display 'READ-INPUT-FILE'
             READ INFILE
                AT END MOVE 1 TO WS-END-OF-FILE
             END-READ.  

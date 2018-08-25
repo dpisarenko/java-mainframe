@@ -27,7 +27,7 @@
     <MaxError>100</MaxError>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ProgramDesignFull.cbl" />
+    <Compile Include="RechnungSumme.cbl" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Application.config" />
