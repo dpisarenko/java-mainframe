@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{535C04D7-A2A5-47C7-83E0-B340A995CD1F}") = "RechnungSumme", "06_02_Program_Design_Full\RechnungSumme.cblproj", "{482DAE16-7DF2-41EA-84C6-77C701D1EA0F}"
+Project("{535C04D7-A2A5-47C7-83E0-B340A995CD1F}") = "RechnungSumme", "RechnungSumme\RechnungSumme.cblproj", "{482DAE16-7DF2-41EA-84C6-77C701D1EA0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
