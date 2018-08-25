@@ -19,16 +19,16 @@
            05 in-vat           pic 9.
        FD OUTFILE.
        01  OUTREC-TYPE-BODY-LINE.
-           05 OUT-NAME         PIC X(19).
-           05                  PIC X.
-           05 OUT-TOTAL-NO-VAT PIC 9(5)V99.
-           05                  PIC X.
-           05 OUT-TOTAL-VAT    PIC 9(5)V99.
-           05                  PIC X.
+           05 OUT-NAME           PIC X(19).
+           05                    PIC X.
+           05 OUT-TOTAL-NO-VAT   PIC 9(5)V99.
+           05                    PIC X.
+           05 OUT-TOTAL-VAT-BODY PIC 9(5)V99.
+           05                    PIC X.
        01  OUTREC-TYPE-TOTAL.
-           05 OUT-TOTAL        PIC X(5).
-           05                  PIC X.
-           05 OUT-TOTAL-VAT    PIC 9(5)V99.
+           05 OUT-TOTAL          PIC X(5).
+           05                    PIC X.
+           05 OUT-TOTAL-VAT      PIC 9(5)V99.
 
        WORKING-STORAGE SECTION .
        01  WS-END-OF-FILE     PIC 9 VALUE 0.
@@ -52,6 +52,11 @@
             PERFORM PROCESS-REC
                 UNTIL WS-END-OF-FILE = 1.
        END-PARA.
+      *Write total for all rows.
+            move 'Total' to OUT-TOTAL
+            move ALL-TOTAL-VAT to OUT-TOTAL-VAT
+            write OUTREC-TYPE-TOTAL
+      *Close files
             CLOSE INFILE OUTFILE
             STOP 'PRESS <CR> TO STOP'
             STOP RUN.
@@ -72,11 +77,18 @@
             else
                 move 1.2 to CUR-VAT-MULT
             END-IF
-      *TODO: Calculate total amount without VAT
-            MOVE ZERO TO CUR-TOTAL-NO-VAT
-            MOVE IN-NAME TO OUT-NAME
+      *Calculate total amount without VAT
+            COMPUTE CUR-TOTAL-NO-VAT = in-quant * in-unit-price * 
+              CUR-REBATE-MULT
+      *Calculate total amount with VAT
+            COMPUTE CUR-TOTAL-VAT = CUR-TOTAL-NO-VAT * CUR-VAT-MULT
+      *Update the "total" variable (for all rows).
+            ADD CUR-TOTAL-VAT TO ALL-TOTAL-VAT
+      *Set the values of the output record
+            move in-name to out-name
+            move cur-total-no-vat to out-total-no-vat
+            move cur-total-vat to OUT-TOTAL-VAT-BODY
             WRITE OUTREC-TYPE-BODY-LINE
-            DISPLAY '12'
             PERFORM READ-INPUT-FILE.
        READ-INPUT-FILE.
             display 'READ-INPUT-FILE'
