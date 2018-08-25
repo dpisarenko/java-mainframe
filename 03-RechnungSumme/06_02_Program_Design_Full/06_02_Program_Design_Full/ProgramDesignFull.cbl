@@ -4,7 +4,7 @@
            SELECT INFILE  ASSIGN INNAME
                           ORGANIZATION SEQUENTIAL.
            SELECT OUTFILE ASSIGN OUTNAME
-                          ORGANIZATION SEQUENTIAL.
+                          ORGANIZATION LINE SEQUENTIAL.
        FILE SECTION.
        FD INFILE.
        01  INPUT-RECORD.
@@ -21,13 +21,15 @@
        01  OUTREC-TYPE-BODY-LINE.
            05 OUT-NAME           PIC X(19).
            05                    PIC X.
+           05 OUT-QUANT          pic 9(2).
+           05                    PIC X.
            05 OUT-TOTAL-NO-VAT   PIC 9(5)V99.
            05                    PIC X.
            05 OUT-TOTAL-VAT-BODY PIC 9(5)V99.
            05                    PIC X.
        01  OUTREC-TYPE-TOTAL.
-           05 OUT-TOTAL          PIC X(5).
-           05                    PIC X.
+           05 OUT-TOTAL          PIC X(19).
+           05                    PIC X(12).
            05 OUT-TOTAL-VAT      PIC 9(5)V99.
 
        WORKING-STORAGE SECTION .
@@ -53,6 +55,7 @@
                 UNTIL WS-END-OF-FILE = 1.
        END-PARA.
       *Write total for all rows.
+            move spaces to OUTREC-TYPE-BODY-LINE
             move 'Total' to OUT-TOTAL
             move ALL-TOTAL-VAT to OUT-TOTAL-VAT
             write OUTREC-TYPE-TOTAL
@@ -64,12 +67,11 @@
             display 'WS-END-OF-FILE = ' WS-END-OF-FILE
             display 'IN-NAME = ' IN-NAME
       *Calculate the rebate multiplicator (CUR-REBATE-MULT).
-            move 1 to CUR-REBATE-MULT
             evaluate in-rebate
                 when 1
                     compute CUR-REBATE-MULT = 1.0 - 0.01
                 when 5
-                    compute CUR-REBATE-MULT = 1.0 - 0.5
+                    compute CUR-REBATE-MULT = 1.0 - 0.05
                 when other
                     compute CUR-REBATE-MULT = 1 - 0
             end-evaluate
@@ -88,6 +90,7 @@
             ADD CUR-TOTAL-VAT TO ALL-TOTAL-VAT
       *Set the values of the output record
             move in-name to out-name
+            move in-quant to OUT-QUANT
             move cur-total-no-vat to out-total-no-vat
             move cur-total-vat to OUT-TOTAL-VAT-BODY
             WRITE OUTREC-TYPE-BODY-LINE
